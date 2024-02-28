@@ -1,5 +1,6 @@
 package com.naic.controller;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.naic.common.Result;
 import com.naic.common.WeChatSessionInfo;
 import com.naic.common.Wechattophone;
@@ -45,11 +46,12 @@ public class UserController {
             System.out.println("电话号" + phoneNumber);
             Result<?> user=userService.seluser(phone.substring(1,phone.length()-1));
             if(user.data==null) {
+                userService.updlbyuser(phone.substring(1, phone.length() - 1));
                 createuser(phone.substring(1, phone.length() - 1));
                 createrecord(phone.substring(1, phone.length() - 1));
                 return Result.success(seluser(phone.substring(1, phone.length() - 1)));
             }else{
-
+                userService.updlbyuser(phone.substring(1, phone.length() - 1));
                 return Result.success(seluser(phone.substring(1, phone.length() - 1)));
             }
 
@@ -99,5 +101,10 @@ public class UserController {
         }else{
             return Result.success("修改失败！");
         }
+    }
+//    用户签到
+    @PostMapping("/qd")
+    public Result<?> upqdbyuser(@RequestParam String u,@RequestParam String q){
+        return  Result.success(userService.upqdbyuser(u,q));
     }
 }

@@ -22,7 +22,6 @@ public class User {
     private int userjyz; //用户经验值
     private int userqdcx; //用户签到
     private Date createdate; //创建时间
-    private String userzt; //用户状态0为正常,2为封号
-
-
+    private String userzt; //用户状态0为正常,2为封号，0代表正常用户，1代表普通后台管理员，3代表超级管理员,4为管理员账号审核
+    private String userdlzt;//0为离线，1为登录
 }

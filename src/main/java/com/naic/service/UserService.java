@@ -42,9 +42,17 @@ public class UserService {
         user.setDkb("");
         user.setUserqdcx(0);
         user.setUserzt("0");
+        user.setUserdlzt("0");
         return  usermapper.insert(user);
 
     }
+    //根据用户名修改登录状态
+    public void updlbyuser(String u){
+        UpdateWrapper<User> updatawrapper1 = new UpdateWrapper<>();
+        updatawrapper1.eq("user",u).set("userdlzt",1);
+        usermapper.update(null,updatawrapper1);
+    }
+
     //根据用户名(手机号)查询用户信息
     public Result<?> seluser(String u){
         LambdaQueryWrapper<User> la1= Wrappers.<User>lambdaQuery();
@@ -130,6 +138,18 @@ public class UserService {
             }
         }
         return i;
+    }
+    //用户签到
+    public int upqdbyuser(String u,String q){
+        User user=selu(u);
+        if(q.equals("0")){
+            UpdateWrapper<User> updatawrapper1 = new UpdateWrapper<>();
+            updatawrapper1.eq("user",u).set("userqdcx",1).set("userjyz",user.getUserjyz()+10);
+           int i= usermapper.update(null,updatawrapper1);
+            return i;
+        }else {
+            return 0;
+        }
     }
 
 

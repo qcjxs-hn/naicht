@@ -1,6 +1,7 @@
 package com.naic.controller;
 
 import com.naic.common.Result;
+import com.naic.entity.Yhzyl;
 import com.naic.service.GnService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,4 +22,9 @@ public class GnController {
         return Result.success(gnService.getgn());
     }
 
+// 查询我的资源栏所有
+    @GetMapping("/zall")
+    public Result<?> getzyall(){
+        return Result.success(gnService.getzyl());
+    }
 }
