@@ -5,8 +5,11 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.naic.common.Result;
 import com.naic.entity.AdminLoginhcc;
+import com.naic.entity.Cjgl;
+import com.naic.entity.Dpuserdy;
 import com.naic.entity.User;
 import com.naic.mapper.Adminmapper;
+import com.naic.mapper.Cjglmapper;
 import com.naic.mapper.Usermapper;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,8 @@ public class AdminService {
     @Resource
     private Adminmapper adminmapper;
 
+    @Resource
+    private Cjglmapper cjglmapper;
     private String lccode="111";
 
     public String getcode(){
@@ -92,11 +97,17 @@ public class AdminService {
         int i =usermapper.update(null,wrapper);
         return i;
     }
+    //根据账号查询用户信息
+    public Cjgl selu(String u){
+        LambdaQueryWrapper<Cjgl> la1= Wrappers.<Cjgl>lambdaQuery();
+        la1.eq(Cjgl::getUser,u);
+        return cjglmapper.selectOne(la1);
+    }
 //    超级管理员登录
-    public Result<?>  superadminlogin(User u){
-        LambdaQueryWrapper<User> wrapper =Wrappers.<User>lambdaQuery();
-        wrapper.eq(User::getUser,u.getUser());
-        User user=usermapper.selectOne(wrapper);
+    public Result<?>  superadminlogin(Cjgl u){
+        LambdaQueryWrapper<Cjgl> wrapper =Wrappers.<Cjgl>lambdaQuery();
+        wrapper.eq(Cjgl::getUser,u.getUser());
+        Cjgl user=cjglmapper.selectOne(wrapper);
         if(user!=null){
             if(u.getPassword().equals(user.getPassword())){
                 uploginbyuser(user.getUser());
@@ -155,4 +166,5 @@ public class AdminService {
 
         return sb.toString();
     }
+
 }

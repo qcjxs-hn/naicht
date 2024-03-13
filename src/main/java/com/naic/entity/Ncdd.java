@@ -24,7 +24,7 @@ public class Ncdd {
     private int jsje;//减少金额
     private int paymon;//实付金额
     private Date createdate;//订单创建时间
-    private String sfzf;//是否支付
+    private String sfzf;//是否支付0为已取消，1为已支付，2为取餐中，3为订单完成
     private String sfwm;//到店还是外卖
     private String dpmc;//购买的店铺名称
     private String dpjl;//用户距离店铺多远

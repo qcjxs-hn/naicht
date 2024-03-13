@@ -39,6 +39,9 @@ public class Ncddservice {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private AdminService adminService;
     private int ddjg;
     private int scjg;
     private String[] jlsz;
@@ -60,14 +63,21 @@ public class Ncddservice {
         for (int i = 0; i < buyteaList.size(); i++) {
            Ncpljl nc= ncservice.selbyname(buyteaList.get(i).getName());
            Ncgg ncgg= ncggservice.getncgg(nc.getCreateid());
-           int jljg=jsjljg(buyteaList.get(i).getJl(),ncgg.getJl());
+            int jljg=0;
+            int bxjg=0;
+            System.out.println(buyteaList.get(i).getJl());
+           if(buyteaList.get(i).getJl().size()!=0) {
+                jljg = jsjljg(buyteaList.get(i).getJl(), ncgg.getJl());
+           }
 //            System.out.println("jljg"+jljg+"");
-            int bxjg=jsbxjg(buyteaList.get(i).getBx(),ncgg.getBx());
+            if(buyteaList.get(i).getBx()!=null) {
+                 bxjg= jsbxjg(buyteaList.get(i).getBx(), ncgg.getBx());
+            }
            //计算总价
             ddjg+=nc.getNcjg()+jljg+bxjg;
             //计算上传总价
             scjg+=buyteaList.get(i).getNcjg();
-//            System.out.println(ddjg+":"+scjg);
+            System.out.println(ddjg+":"+scjg);
         }
         DdFhsz ddFhsz=new DdFhsz();
         ddFhsz.setIc(Decjm.encrypt(createid,Locationfw.jmkey));
@@ -185,5 +195,27 @@ public class Ncddservice {
             return new Page<>();
         }
     }
-
+//==========================后台===========================================
+//    根据店铺查询相关订单
+    public List<Ncdd> selddbydpmc(String dpmc){
+        LambdaQueryWrapper<Ncdd> wrapper=Wrappers.<Ncdd>lambdaQuery();
+        if(dpmc.equals("")){
+            return null;
+        }else{
+            wrapper.eq(Ncdd::getDpmc,dpmc);
+            return ncddmapper.selectList(wrapper);
+        }
+    }
+//   超级管理员全查
+    public List<Ncdd> selddbysupername(String u){
+        if(adminService.selu(u)!=null) {
+            if (adminService.selu(u).getUserzt().equals("3")) {
+                return ncddmapper.selectList(null);
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
+    }
 }

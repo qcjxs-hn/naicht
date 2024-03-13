@@ -52,4 +52,15 @@ public class Nccontroller {
     public Result<?> selncddbyuser(@RequestParam String u){
         return Result.success(ncddservice.selddbyuser(u));
     }
+//==========================后台===========================================
+//    根据店铺查询相关订单
+    @GetMapping("/seldd")
+    public Result<?> selddbydpmc(@RequestParam String d){
+        return Result.success(ncddservice.selddbydpmc(d));
+    }
+//       超级管理员全查
+    @GetMapping("/superselall")
+    public Result<?> selddbysupername(@RequestParam String u){
+        return Result.success(ncddservice.selddbysupername(u));
+    }
 }

@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -23,6 +25,9 @@ public class UserService {
 
     @Resource
     private Usermapper usermapper;
+
+    @Resource
+    private AdminService adminService;
     //创建用户
     public int createUser(String p) {
         Date date=new Date();
@@ -151,6 +156,25 @@ public class UserService {
             return 0;
         }
     }
-
+//==========================后台===========================================
+//       超级管理员全查
+    public List<User> selall(String u){
+        if(adminService.selu(u)!=null) {
+            if(adminService.selu(u).getUserzt().equals("3")) {
+                List<User> users = usermapper.selectList(null);
+                for (int i = 0; i < users.size(); i++) {
+                    users.get(i).setPassword("");
+                    users.get(i).setUserbr(java.sql.Date.valueOf("1970-01-01"));
+                    users.get(i).setUserjyz(0);
+                    users.get(i).setUsersex("");
+                }
+                return users;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
+    }
 
 }

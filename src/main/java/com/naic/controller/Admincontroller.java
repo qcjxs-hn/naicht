@@ -1,6 +1,7 @@
 package com.naic.controller;
 
 import com.naic.common.Result;
+import com.naic.entity.Cjgl;
 import com.naic.entity.User;
 import com.naic.mapper.Usermapper;
 import com.naic.service.AdminService;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/admin")
 public class Admincontroller {
@@ -54,7 +55,8 @@ public class Admincontroller {
 
     //    超级管理员登录
     @PostMapping("/sal")
-    public Result<?> Superadminlogin(@RequestBody User user){
+    public Result<?> Superadminlogin(@RequestBody Cjgl user){
+        System.out.println(user);
         return Result.success(adminService.superadminlogin(user));
     }
 }

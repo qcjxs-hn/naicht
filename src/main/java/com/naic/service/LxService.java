@@ -6,6 +6,7 @@ import com.naic.entity.Cjgl;
 import com.naic.entity.Lx;
 import com.naic.mapper.Cjglmapper;
 import com.naic.mapper.Lxmapper;
+import com.naic.mapper.Usermapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,9 +26,11 @@ public class LxService {
         LambdaQueryWrapper<Lx> wrapper = Wrappers.<Lx>lambdaQuery();
         wrapper.like(Lx::getCreateid,lx.getUser());
         List<Lx> lx1=lxmapper.selectList(wrapper);
+
         ArrayList<Integer> gsList = new ArrayList<>();
         Date date=new Date();
-        if(lx1==null){
+        System.out.println(lx1);
+        if(lx1.size()==0){
             //根据管理员回复人数分流
            List<Cjgl> cjgl =cjglmapper.selectList(null);
             LambdaQueryWrapper<Lx> wrapper2 = Wrappers.<Lx>lambdaQuery();
@@ -59,6 +62,7 @@ public class LxService {
 //            cjgl.get(minIndex);
 //            lx.setCreateid();
         }else {
+            System.out.println(lx);
             lx.setCreateid(lx1.get(0).getCreateid());
             lx.setMesid(date.getTime() + "");
             System.out.println(lx.getContent());

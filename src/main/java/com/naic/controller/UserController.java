@@ -76,7 +76,8 @@ public class UserController {
 //    获取用户优惠券
     @GetMapping("/getyhq")
     public Result<?> selyhq(@RequestParam String q){
-        if(q!="") {
+        System.out.println(q);
+        if(q!=""||q!=null) {
             String[] qz = q.split(";");
             qsz = new Yhq[qz.length]; // 初始化数组
             for (int i = 0; i <qz.length; i++) {
@@ -106,5 +107,11 @@ public class UserController {
     @PostMapping("/qd")
     public Result<?> upqdbyuser(@RequestParam String u,@RequestParam String q){
         return  Result.success(userService.upqdbyuser(u,q));
+    }
+//==========================后台===========================================
+//       超级管理员全查
+    @GetMapping("/superselalluser")
+    public Result<?> selalluser(@RequestParam String u){
+        return Result.success(userService.selall(u));
     }
 }
