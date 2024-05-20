@@ -1,0 +1,54 @@
+
+         ,--.                                                            ,--,          ,--.
+       ,--.'|   ,----..                                                ,--.'|        ,--.'|
+   ,--,:  : |  /   /   \            ,---,                           ,--,  | :    ,--,:  : |
+,`--.'`|  ' : |   :     :         ,---.'|                        ,---.'|  : ' ,`--.'`|  ' :
+|   :  :  | | .   |  ;. /         |   | :                        |   | : _' | |   :  :  | |
+:   |   \ | : .   ; /--`          :   : :          .--,          :   : |.'  | :   |   \ | :
+|   : '  '; | ;   | ;             :     |,-.     /_ ./|          |   ' '  ; : |   : '  '; |
+'   ' ;.    ; |   : |             |   : '  |  , ' , ' :          '   |  .'. | '   ' ;.    ;
+|   | | \   | .   | '___          |   |  / : /___/ \: |          |   | :  | ' |   | | \   |
+'   : |  ; .' '   ; : .'|         '   : |: |  .  \  ' |          '   : |  : ; '   : |  ; .'
+|   | '`--'   '   | '/  :         |   | '/ :   \  ;   :          |   | '  ,/  |   | '`--'
+'   : |       |   :    /          |   :    |    \  \  ;          ;   : ;--'   '   : |
+;   |.'        \   \ .'           /    \  /      :  \  \         |   ,/       ;   |.'
+'---'           `---`             `-'----'        \  ' ;         '---'        '---'
+                                                   `--`
+NC by HN
+                ,,, .             ;
+               .:i,,            ,:.i
+                ::::..          ::i.i,
+                ,::::;.  .  .. .:::..;...
+                :::;:,ij  :ffj:.,:,t,,
+                ;:::,;tijGtittif:,:,;;t  .
+                .:,.;,tiit;ittj;:,::,;;,.  .
+                .,::;ijtttiiii;,::::;;;ft  .
+                i::tii;t,D;jG;;i;,:;;;iji::.
+                f,ti:,,iD;;;GE,itii,;;;it,;;.
+                i,,,;itL;,iiiti,iii;i;itjt,t .
+             .. ;i,,;,j,;,i;i,f:iiti;ittjf;:
+           ,,:, .t,KDj .,..j:LEDDD;..:t:tt;ijt,.
+           ;i:, f::fL .      :tftKGt..t,it;itt,.
+          ..i;;,ii: KL;       iGG;..:.tiittiij:.
+            ,i:i:j.,f;: ..    ,GjK,...jittjt;t:.
+          . ;;:,,j::......  ...;;,t::,jiittttt;,
+           .t;;,.f ...       ..:::.;.:iitiiitii.
+            tiii.L             ....:.;tititij,;,
+            t,;;:tL .   .        ...:itiiitij;t;
+          ..t,;;.fiL .. :        .::,ttititttit, ..
+           :i;i;,tttf..         :;:..jttittitjii
+           :;ii;;ijt;ij  .    ft,t::,jjj;it,ttii.
+          ...ii;itji;;ij. .;GE,;:t..itif;jt:jti,:.
+             t;tiiit;ijittfttD,;...iijtj,tf,iii,..
+            ..jtji;,jfttft,,,:,:....  .,,;jfii ....
+          .   jiii,,ijLLi,:, ::......  ;,,,,,;;D,
+            ;LLijji,;ii;: ,:::.......,,ii,.;;:.;DGG
+            GGfijj;,:t,,. ::::::......;::,;,:...KDGt
+          .iGD:,tj,i;j:.. ...:........ .,:i,:...,DDD .
+           EGD.,,jii,, ..  ..............,...:. iWDG.
+          .DGD..;.i :,f  .  ......... .......,;LEEEEK
+          iDDD,.;:jtGf   .. ........ . ...LGGGGGGGDEGi
+          GDDD,,;LGji  ,GL   .. ..  ... GGGLGGGGGGGEDK
+          EDDD,,LL,fGGDGLGGG  .  ..... fLLGGGGGGGGGDEE
+          DGDDfDGG.G:KGGGGGLi  .......DLGGGGGGGGGGEDDEE: .
+       . :GGGDGLGGLGKGDGDDGGE.. ....,LGGGLGGGGGGDEEEDGLD.

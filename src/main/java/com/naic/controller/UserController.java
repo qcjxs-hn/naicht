@@ -41,6 +41,7 @@ public class UserController {
             String sessionKey = fhinfo.getSessionKey();
             String iv = w.getIv();
             String phoneNumber = Wechattophone.decryptPhoneNumber(encryptedData, sessionKey, iv);
+            System.out.println(phoneNumber);
             String phone=phoneNumber.split(",")[0].split(":")[1];
             System.out.println(phone.substring(1,phone.length()-1));
             System.out.println("电话号" + phoneNumber);
@@ -108,10 +109,41 @@ public class UserController {
     public Result<?> upqdbyuser(@RequestParam String u,@RequestParam String q){
         return  Result.success(userService.upqdbyuser(u,q));
     }
+//    用户签到更新(每天)
+    @PostMapping("/qdgx")
+    public Result<?> upqdgxbyuser(@RequestParam String u){
+        return Result.success(userService.upqdgxbyuser(u));
+    }
 //==========================后台===========================================
 //       超级管理员全查
     @GetMapping("/superselalluser")
     public Result<?> selalluser(@RequestParam String u){
         return Result.success(userService.selall(u));
     }
+//    根据user删除用户
+    @DeleteMapping("/deluser")
+    public Result<?> deluser(@RequestParam String u){return Result.success(userService.deluser(u));}
+    //    根据user更新用户
+    @PostMapping("/upuser")
+    public Result<?> updatauser(@RequestBody User user){
+        return Result.success(userService.updatauser(user));
+    }
+    //    超级管理员添加用户
+    @PostMapping("/adduser")
+    public Result<?> adduser(@RequestBody User user){
+        return Result.success(userService.adduser(user));
+    }
+//===============优惠卷===================
+////超级管理员全查优惠卷
+    @GetMapping("/superselallyhj")
+    public Result<?> selallyhj(@RequestParam String u) {return Result.success(yhqservice.selyhjall(u));}
+    //    新增优惠卷
+    @PostMapping("/addyhj")
+    public Result<?> addyhj(@RequestBody Yhq yhq){return Result.success(yhqservice.addyhj(yhq));}
+    //    修改优惠卷信息
+    @PostMapping("/upyhj")
+    public Result<?> upyhj(@RequestBody Yhq yhq){return Result.success(yhqservice.upyhj(yhq));}
+    //    根据id删除对应优惠卷
+    @DeleteMapping("/delyhj")
+    public Result<?> delyhj(@RequestParam String i){return Result.success(yhqservice.delyhj(i));}
 }

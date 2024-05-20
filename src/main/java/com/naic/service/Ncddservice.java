@@ -4,6 +4,8 @@ package com.naic.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.naic.common.Decjm;
@@ -196,7 +198,16 @@ public class Ncddservice {
         }
     }
 //==========================后台===========================================
-//    根据店铺查询相关订单
+    //发送取餐
+    public int fsqc(String i){
+
+        UpdateWrapper<Ncdd> updatawrapper1 = new UpdateWrapper<>();
+        updatawrapper1.eq("createid",i).set("sfzf","2");
+        return ncddmapper.update(null,updatawrapper1);
+    }
+
+
+    //    根据店铺查询相关订单
     public List<Ncdd> selddbydpmc(String dpmc){
         LambdaQueryWrapper<Ncdd> wrapper=Wrappers.<Ncdd>lambdaQuery();
         if(dpmc.equals("")){
@@ -217,5 +228,17 @@ public class Ncddservice {
         }else{
             return null;
         }
+    }
+    //    根据id删除订单
+    public int delncdd(String i){
+        LambdaQueryWrapper<Ncdd> wrapper=Wrappers.<Ncdd>lambdaQuery();
+        wrapper.eq(Ncdd::getCreateid,i);
+        return ncddmapper.delete(wrapper);
+    }
+    //    根据id更新订单
+    public int updatancdd(Ncdd ncdd){
+        LambdaQueryWrapper<Ncdd> wrapper=Wrappers.<Ncdd>lambdaQuery();
+        wrapper.eq(Ncdd::getCreateid,ncdd.getCreateid());
+        return ncddmapper.update(ncdd,wrapper);
     }
 }

@@ -77,4 +77,18 @@ public class LxService {
         List<Lx> lx1=lxmapper.selectList(wrapper);
         return lx1;
     }
+//===================================管理员=======================================
+    public int glyhfxx(Lx lx){
+        LambdaQueryWrapper<Lx> wrapper = Wrappers.<Lx>lambdaQuery();
+        wrapper.eq(Lx::getCreateid,lx.getCreateid());
+        List<Lx> lx1=lxmapper.selectList(wrapper);
+        Date date=new Date();
+        if(lx1.size()==0){
+            return 0;
+        }else{
+            lx.setMesid(date.getTime() + "");
+            int i = lxmapper.insert(lx);
+            return i;
+        }
+    }
 }

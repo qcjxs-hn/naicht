@@ -3,6 +3,8 @@ package com.naic.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 @TableName("dpuserzy")
 public class Dpuserdy {
@@ -13,7 +15,7 @@ public class Dpuserdy {
     private float longitude;//店铺精度
     private String dpwz;//对应店铺位置
     private String createid;//创建id
-    private String createdate;//时间
+    private Date createdate;//时间
     private String dpzt;//0为待审核，1为开店状态，2为店铺已注销
 
 }

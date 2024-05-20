@@ -156,6 +156,18 @@ public class UserService {
             return 0;
         }
     }
+    //    用户签到更新(每天)
+    public int  upqdgxbyuser(String u){
+        User user=selu(u);
+        if(user.getUserqdcx()==1){
+            UpdateWrapper<User> updatawrapper1 = new UpdateWrapper<>();
+            updatawrapper1.eq("user",u).set("userqdcx",0);
+            int i= usermapper.update(null,updatawrapper1);
+            return i;
+        }else {
+            return 0;
+        }
+    }
 //==========================后台===========================================
 //       超级管理员全查
     public List<User> selall(String u){
@@ -164,9 +176,9 @@ public class UserService {
                 List<User> users = usermapper.selectList(null);
                 for (int i = 0; i < users.size(); i++) {
                     users.get(i).setPassword("");
-                    users.get(i).setUserbr(java.sql.Date.valueOf("1970-01-01"));
-                    users.get(i).setUserjyz(0);
-                    users.get(i).setUsersex("");
+//                    users.get(i).setUserbr(java.sql.Date.valueOf("1970-01-01"));
+//                    users.get(i).setUserjyz(0);
+//                    users.get(i).setUsersex("");
                 }
                 return users;
             }else{
@@ -177,4 +189,28 @@ public class UserService {
         }
     }
 
+    //    根据user删除用户
+    public int deluser(String u){
+        LambdaQueryWrapper<User> wrapper=Wrappers.<User>lambdaQuery();
+        wrapper.eq(User::getUser,u);
+        return usermapper.delete(wrapper);
+    }
+//    根据user更新用户
+    public int updatauser(User user){
+        LambdaQueryWrapper<User> wrapper=Wrappers.<User>lambdaQuery();
+        wrapper.eq(User::getUser,user.getUser());
+        return usermapper.update(user,wrapper);
+    }
+//    超级管理员添加用户
+    public int adduser(User user){
+        Date date=new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if(selu(user.getUser())==null){
+            user.setCreatedate(java.sql.Date.valueOf(sdf.format(date)));
+            user.setUserjlid(date.getTime()+"");
+            return usermapper.insert(user);
+        }else{
+            return 0;
+        }
+    }
 }

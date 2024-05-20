@@ -38,9 +38,9 @@ public class AdminService {
         return lccode;
     }
     public int smhzc(String u ,String c){
-        System.out.println(u);
-        System.out.println(c);
-        System.out.println(lccode);
+//        System.out.println(u);
+//        System.out.println(c);
+//        System.out.println(lccode);
         LambdaQueryWrapper<User> wrapper= Wrappers.<User>lambdaQuery();
         wrapper.eq(User::getUser,u);
         User user=usermapper.selectOne(wrapper);
@@ -97,7 +97,13 @@ public class AdminService {
         int i =usermapper.update(null,wrapper);
         return i;
     }
-    //根据账号查询用户信息
+    //根据账号查询管理员信息
+    public User selus(String u){
+        LambdaQueryWrapper<User> la1= Wrappers.<User>lambdaQuery();
+        la1.eq(User::getUser,u);
+        return usermapper.selectOne(la1);
+    }
+    //根据账号查询超级管理员信息
     public Cjgl selu(String u){
         LambdaQueryWrapper<Cjgl> la1= Wrappers.<Cjgl>lambdaQuery();
         la1.eq(Cjgl::getUser,u);

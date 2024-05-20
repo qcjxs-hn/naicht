@@ -13,6 +13,7 @@ public class Storeinfo {
     private float latitude;//店铺纬度
     private float longitude;//店铺精度
     private String dpwz;//店铺位置
+    private String dpzt;//店铺是否开启0为闭店，1为开店;
     private String createid;//店铺id
     private Date createdate;//店铺创建时间
 

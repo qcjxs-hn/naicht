@@ -22,4 +22,9 @@ public class LxController {
     public Result<?> getmes(@RequestParam String u){
         return Result.success(lxService.getmes(u));
     }
+    //===================================管理员==================================
+    @PostMapping("/hf")
+    public Result<?> kfhf(@RequestBody Lx lx){
+        return Result.success(lxService.glyhfxx(lx));
+    }
 }
